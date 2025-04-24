@@ -111,6 +111,49 @@
           <strong>Sus Majestades le envían sus mejores deseos de convalecencia </strong>
           y esperan visitarlo en la Santa Sede una vez que se haya recuperado", indicó un comunicado.
         </p>
-      </div>      
+      </div>     
+      
+      <form action="https://httpbin.org/post" method="post">
+        <fieldset>
+          <legend>Datos personales</legend>
+          <ul>
+            <li>
+              <label for="name">Nombre</label>
+              <input type="text" name="user_name" id="name" required>
+            </li>
+            <li>
+              <label for="mail">Correo electrónico</label>
+              <input type="email" name="user_email" id="mail" required>
+            </li>
+            <li>
+              <label for="edad">Edad</label>
+              <input type="datetime" name="user_date" id="edad" required>
+            </li>
+        </fieldset>
+      <fieldset>
+        <legend>Sexo</legend>
+        <li>
+          <input type="radio" name="user_sex" value="Mujer">Hombre
+          <input type="radio" name="user_sex" value="Hombre">Mujer
+        </li>
+      </fieldset>
+      <div>
+        <select size="3" name="pais" id="" required>
+          <option value="argentina">Argentina</option>
+          <option value="peru">Peru</option>
+          <option value="chile">Chile</option>
+        </select>
+      </div>
+      <div>
+        <textarea name="Info" id=""></textarea>
+      </div>
+      <div>
+        <li class="button">
+          <button type="submit"> Subir </button>
+        </li>
+        
+      </div>
+      </ul>  
+      </form>
 </body>
 </html>
