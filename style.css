@@ -128,20 +128,6 @@ hr{
 }
 
 
-.footer p{
-  color: aliceblue;
-}
-
-.center{
-  text-align: center;
-  font-size: small;
-}
-.footer hr{
-  margin: 120px 30px 0; 
-}
-
-.footer a{
-  display: block;
   text-decoration: none;
   color: #ccc;
   margin-left: 40px;
