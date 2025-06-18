@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Formulario</title>
+</head>
+<body>
+  <div class="form_log">
+    <form action="" method="POST" id="form">
+      <div>
+        <legend>Datos personales</legend>
+        <ul>
+          <li>
+            <label for="name">Nombre</label>
+            <input type="text" name="user_name" id="name" required>
+            <p id="msjName" class="mensaje"></p>
+          </li>
+          <li>
+            <label for="mail">Correo electrónico</label>
+            <input type="email" name="user_email" id="mail" required>
+            <p id="msjMail" class="mensaje"></p>
+          </li>
+          <li>
+            <label for="contraseña">Contraseña</label>
+            <input type="password" name="user_password" id="contraseña" required>
+            <p id="msjClave" class="mensaje"></p>
+          </li>
+          <li>
+            <label for="edad">Edad</label>
+            <input type="number" name="user_edad" id="edad" required>
+             <p id="msjEdad" class="mensaje"></p>
+          </li>
+          <li>
+            <label for="telefono">Teléfono</label>
+            <input type="tel" name="user_telefono" id="telefono" required>
+            <p id="msjTel" class="mensaje"></p>
+          </li>
+          <li>
+            <label for="dni">DNI</label>
+            <input type="text" name="user_dni" id="dni" required>
+            <p id="msjDni" class="mensaje"></p>
+          </li>
+        </ul>
+    </div>
+<hr>
+      <div>
+        <legend>Ubicación</legend>
+        <ul>
+          <li>
+            <label for="ciudad">Ciudad</label>
+            <input type="text" name="user_ciudad" id="ciudad" required>
+            <p id="msjCiudad" class="mensaje"></p>
+          </li>
+          <li>
+            <label for="codigo_postal">Código Postal</label>
+            <input type="text" name="user_codigo_postal" id="cp" required>
+             <p id="msjCP" class="mensaje"></p>
+          </li>
+          <li>
+            <label for="direccion">Direccion</label>
+            <input type="text" name="user_dir" id="dir" required>
+             <p id="msjDir" class="mensaje"></p>
+          </li>
+        </ul>
+    </div>
+
+      <ul style="border:  none;">
+        <li class="button">
+          <button type="submit">Registrar</button>
+        </li>
+      </ul>
+    </form>
+  </div>
+  <div class="footer">
+    <p style="font-size: 22px; padding: 40px 30px 0;">SPK TODOS LOS DERECHOS RESERVADOS</p>
+    <p style="padding: 40px 30px 0; margin-bottom: 20px;">Síguenos :
+      <a href="#">Instagram</a>
+      <a href="#">Facebook</a>
+      <a href="#">Twitter</a>
+    </p>
+    <hr>
+    <p class="center">Términos y condiciones, Políticas y privacidad</p>
+  </div>
+    <script src="main.js"></script>
+</body>
+</html>
