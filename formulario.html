@@ -7,9 +7,11 @@
   <title>Formulario</title>
 </head>
 <body>
+  <h1 class="titulo-form">Formulario de registro</h1>
   <div class="form_log">
-    <form action="" method="POST" id="form">
-      <div>
+    <form action=""  id="form">
+      <div class="conteiner-form">
+       <div >
         <legend>Datos personales</legend>
         <ul>
           <li>
@@ -44,7 +46,6 @@
           </li>
         </ul>
     </div>
-<hr>
       <div>
         <legend>Ubicación</legend>
         <ul>
@@ -65,13 +66,16 @@
           </li>
         </ul>
     </div>
-
-      <ul style="border:  none;">
-        <li class="button">
-          <button type="submit">Registrar</button>
-        </li>
-      </ul>
+      </div>
+          <button class="button" type="">Registrar</button>
     </form>
+  </div>
+  <div class="modal" id="#modal">
+    <div class="modal-content" id="#modal-content">
+      <span class="close" id="#close">&times;</span>
+      <h2 id="modalTitle"></h2>
+      <p id="userModal"></p>
+    </div>
   </div>
   <div class="footer">
     <p style="font-size: 22px; padding: 40px 30px 0;">SPK TODOS LOS DERECHOS RESERVADOS</p>

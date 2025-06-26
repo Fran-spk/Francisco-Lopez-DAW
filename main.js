@@ -20,65 +20,97 @@
   const msjDni = document.getElementById("msjDni");
   var mensajeError = "Campo invalido";
 
-  form.addEventListener("submit", e => {
+  const modal = document.getElementById('#modal');
+  const closeModal = document.getElementById('#close');
+  const userModal = document.getElementById('userModal');
+  const modalTitle = document.getElementById('modalTitle');
+
+
+  window.onload = function () {
+  const usuarioGuardado = JSON.parse(localStorage.getItem("usuario"));
+  if (usuarioGuardado) {
+    nombre.value = usuarioGuardado.nombre;
+    mail.value = usuarioGuardado.email;
+    edad.value = usuarioGuardado.edad;
+    tel.value = usuarioGuardado.telefono;
+    dir.value = usuarioGuardado.direccion;
+    ciudad.value = usuarioGuardado.ciudad;
+    cp.value = usuarioGuardado.codigoPostal;
+    dni.value = usuarioGuardado.dni;
+   }
+  };
+
+
+form.addEventListener("submit", e => {
      e.preventDefault();
 
-  var errores = "";
+      var errores;
 
-  if (validarName()) {
-    errores += "• El nombre debe tener al menos 6 caracteres y al menos un espacio\n";
-  }
+      if (validarName()) {
+        errores += "• El nombre debe tener al menos 6 caracteres y al menos un espacio\n";
+      }
 
-  if (!validarEmail(mail.value)) {
-    errores += "• Email inválido\n";
-  }
+      if (!validarEmail(mail.value)) {
+        errores += "• Email inválido\n";
+      }
 
-  if (!validarContraseña()) {
-    errores += "• Contraseña inválida (mínimo 8 caracteres, debe tener letras y números)\n";
-  }
+      if (!validarContraseña()) {
+        errores += "• Contraseña inválida (mínimo 8 caracteres, debe tener letras y números)\n";
+      }
 
-  if (!validarEdad()) {
-    errores += "• Edad inválida (debe ser un número entero mayor a 18)\n";
-  }
+      if (!validarEdad()) {
+        errores += "• Edad inválida (debe ser un número entero mayor a 18)\n";
+      }
 
-  if (!validarTel()) {
-    errores += "• Teléfono inválido (debe ser un número entero de al menos 7 dígitos)\n";
-  }
+      if (!validarTel()) {
+        errores += "• Teléfono inválido (debe ser un número entero de al menos 7 dígitos)\n";
+      }
 
-  if (!validarDir()) {
-    errores += "• Dirección inválida (mínimo 5 caracteres, debe contener letras, números y al menos un espacio)\n";
-  }
+      if (!validarDir()) {
+        errores += "• Dirección inválida (mínimo 5 caracteres, debe contener letras, números y al menos un espacio)\n";
+      }
 
-  if (!validarCiudadCP(ciudad)) {
-    errores += "• Ciudad inválida\n";
-  }
+      if (!validarCiudadCP(ciudad)) {
+        errores += "• Ciudad inválida\n";
+      }
 
-  if (!validarCiudadCP(cp)) {
-    errores += "• Código postal inválido\n";
-  }
+      if (!validarCiudadCP(cp)) {
+        errores += "• Código postal inválido\n";
+      }
 
-  if (!validarDni()) {
-    errores += "• DNI inválido\n";
-  }
-
-
-  if (errores!=null) {
-    alert("Se encontraron los siguientes errores:\n\n" + errores);
-  } else {
-    alert(
-      "Datos ingresados correctamente:\n\n" +
-      "Nombre: " + nombre.value + "\n" +
-      "Email: " + mail.value + "\n" +
-      "Edad: " + edad.value + "\n" +
-      "Teléfono: " + tel.value + "\n" +
-      "Dirección: " + dir.value + "\n" +
-      "Ciudad: " + ciudad.value + "\n" +
-      "Código Postal: " + cp.value + "\n" +
-      "DNI: " + dni.value
-    );
-  }
+      if (!validarDni()) {
+        errores += "• DNI inválido\n";
+      }
+      const user = {
+        nombre: nombre.value,
+        email: mail.value,
+        edad: edad.value,
+        telefono: tel.value,
+        direccion: dir.value,
+        ciudad: ciudad.value,
+        codigoPostal: cp.value,
+        dni: dni.value
+      };
+      modal.style.display = 'flex';
+      if (errores!=null) {
+        modalTitle.textContent = 'Error en la suscripcion';
+        userModal.textContent="Se encontraron los siguientes errores:\n\n" + errores;
+      } else {
+        fetch('https://jsonplaceholder.typicode.com/posts',{
+          method:'POST',      
+          body: JSON.stringify(user)
+        })
+       .then(response => response.json())
+       .then(data => console.log(data));       
+        modalTitle.textContent = 'Suscripcion exitosa!';
+        userModal.textContent = JSON.stringify(user, null, 2); 
+        localStorage.setItem("usuario", JSON.stringify(user));
+      }
   });
 
+  closeModal.addEventListener('click',function () {
+    modal.style.display = 'none';
+  })
 
   nombre.addEventListener("blur", e => {
      if (validarName())
@@ -200,9 +232,7 @@
 
 
 
-
 function validarEmail(email) {
-    // Expresión regular para validar un correo electrónico
     const regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
     return regex.test(email);
 }
